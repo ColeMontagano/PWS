@@ -1,14 +1,15 @@
 import React, {Component} from 'react'
-import { Jumbotron } from 'reactstrap'
+import { Jumbotron} from 'reactstrap'
 
 
 class Home extends Component {
 
 render() {
      return(
-<Jumbotron>
-    Welcome To Public Working Spaces
-</Jumbotron>
+     <Jumbotron>
+          <h1>Welcome To Public Working Spaces</h1>
+     </Jumbotron>
+
      )
 }
 }

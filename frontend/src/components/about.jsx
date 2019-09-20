@@ -1,9 +1,12 @@
 import React, {Component} from 'react'
+import {Jumbotron} from 'reactstrap'
 
 class About extends Component {
     render() {
         return(
-            <h1>Hello From About</h1>
+            <Jumbotron>
+                <h1>Hello From About</h1>
+            </Jumbotron>
         )
     }
 }
