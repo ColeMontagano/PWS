@@ -44,3 +44,16 @@ newUser.save()
  .then(user => {
      console.log(user)
  })
+
+
+ app.post('/workingspace', (req,res) => {
+     let workingSpace = req.body.workingSpace
+
+     console.log(workingSpace)
+ })
+
+
+
+ app.listen(8080, () => {
+	console.log(`listening`)
+})
