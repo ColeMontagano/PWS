@@ -9,7 +9,7 @@ class WorkingSpaces extends Component {
                 <Jumbotron>
                     <h1>Hello From Working Space</h1>
                 </Jumbotron>
-                <NewSpace/>
+                <NewSpace />
             </div>
         )
     }
