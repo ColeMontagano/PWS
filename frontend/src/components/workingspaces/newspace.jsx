@@ -1,13 +1,14 @@
 import React from 'react'
 import {Col, Row, Button, Form, FormGroup, Label, Input, CustomInput} from 'reactstrap'
 import {useFormik} from 'formik'
+import axios from 'axios'
 
 const NewSpace = () =>  {
 
 
 const formik = useFormik({
     initialValues : { name : '', country : '', city : '', address : '', privacy : 3, noise : 3, popularity : 3, security : 3, wifiSpeed : 3},
-    onSubmit: values => {console.log(values)}
+    onSubmit: values => {axios.post('http://localhost:8080/workingspace', {values})}
 })
 
 

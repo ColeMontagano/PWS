@@ -29,27 +29,35 @@ const WorkingSpace = bookshelf.Model.extend({
     tableName: 'workingspaces'
 })
 
-const newWorkingSpace = new WorkingSpace({
-    name: 'Starbucks'
-})
-newWorkingSpace.save()
-    .then(workingspace => {
-        console.log(workingspace)
-    })
-
-const newUser = new User({
-    email: 'email@email.com'
-})
-newUser.save()
- .then(user => {
-     console.log(user)
- })
+// const newUser = new User({
+//     email: 'email@email.com'
+// })
+// newUser.save()
+//  .then(user => {
+//      console.log(user)
+//  })
 
 
  app.post('/workingspace', (req,res) => {
-     let workingSpace = req.body.workingSpace
+     let data = req.body.values
 
-     console.log(workingSpace)
+     console.log(req.body.values)
+
+     const newWorkingSpace = new WorkingSpace({
+         name: data.name,
+         country : data.country,
+         city : data.city,
+         address : data.address,
+         privacy : data.privacy,
+         noise : data.noise,
+         popularity : data.popularity,
+         security : data.security,
+         wifiSpeed : data.wifiSpeed
+     })
+     newWorkingSpace.save()
+                .then(
+                    workingspace => console.log(workingspace)
+                )
  })
 
 
