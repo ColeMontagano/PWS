@@ -1,7 +1,7 @@
 import Home from './home'
 import About from './about'
 import WorkingSpaces from './workingspaces/main'
-import AppNavbar from './navbar'
+import Navbar from './navbar'
 import NewSpace from './workingspaces/newspace'
 
-export { AppNavbar, Home, WorkingSpaces, About, NewSpace }
+export { Navbar, Home, WorkingSpaces, About, NewSpace }

@@ -1,55 +1,35 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Collapse, Navbar, NavbarToggler, Nav, NavItem} from 'reactstrap'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
 
-class AppNavbar extends Component {
-	constructor(props) {
-		super(props)
-		this.toggle = this.toggle.bind(this)
-		this.state = {
-            isOpen: false
-		}
-	}
-
-	toggle() {
-		this.setState({
-			isOpen : !this.state.isOpen
-		})
-	}
-
+class Navbar extends Component {
 	render() {
 		return (
-			<div>
-				<Navbar dark expand="md">
-					<Link className="navLinks" to="/">
-						Home
-					</Link>
-					<Nav>
-						<NavItem>
-							<Link className="navLinks" to="/about">
-								About
-							</Link>
-						</NavItem>
-					</Nav>
-					<Nav>
-						<NavItem>
-							<Link className="navLinks" to="/pws">
-								PWS
-							</Link>
-						</NavItem>
-					</Nav>
-					<NavbarToggler onClick={this.toggle} />
-					<Collapse isOpen={this.state.isOpen} navbar>
-						<Nav className="ml-auto" navbar>
-							<NavItem>
-                                "toggle area"
-							</NavItem>
-						</Nav>
-					</Collapse>
-				</Navbar>
+			<div className="Navbar">
+				<AppBar position="sticky">
+					<Toolbar>
+						<Typography className="grow" variant="h6" color="inherit">
+							<Button component={Link} to="/">
+								"LOGO"
+							</Button>
+						</Typography>
+						<Button color="inherit" exact component={Link} to="/">
+							Home
+						</Button>
+						<Button color="inherit" component={Link} to="/about">
+							About
+						</Button>
+						<Button color="inherit" component={Link} to="/pws">
+							PWS
+						</Button>
+					</Toolbar>
+				</AppBar>
 			</div>
 		)
 	}
 }
 
-export default AppNavbar
+export default Navbar

@@ -2,8 +2,8 @@
   text-align: center;
 }
 
-.jumbotron {
-  min-height: 20rem;
+.workingSpaces {
+	margin: 0 10rem;
 }
 
 .navLinks {
@@ -15,3 +15,4 @@
 	text-decoration: none;
 	color:#c0c0c2;
 }
+
