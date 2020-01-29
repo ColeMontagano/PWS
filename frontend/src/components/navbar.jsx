@@ -16,7 +16,7 @@ class Navbar extends Component {
 								"LOGO"
 							</Button>
 						</Typography>
-						<Button color="inherit" exact component={Link} to="/">
+						<Button color="inherit" component={Link} to="/">
 							Home
 						</Button>
 						<Button color="inherit" component={Link} to="/about">

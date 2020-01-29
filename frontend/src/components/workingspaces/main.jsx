@@ -7,7 +7,7 @@ class WorkingSpaces extends Component {
     render() {
         return(
             <div className="workingSpaces">
-     <Typography classname="header" variant="h1">
+     <Typography className="header" variant="h1">
           Hello From Working Space
      </Typography>
 
