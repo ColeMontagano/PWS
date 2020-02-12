@@ -8,20 +8,15 @@ class Spaces extends Component {
         allSpaces : []
     })
 
-    componentWillMount() {
+    componentDidMount() {
         axios.get('http://localhost:8080/workingspace').then(allItems => this.setState({allSpaces : allItems.data}))
     }
 
-    // fetchAll = () => {
-    //     axios.get('http://localhost:8080/workingspace').then(allItems => this.setState({allSpaces : allItems.data}))
-    // }
 
 
     render(){
         return (
             <div>
-                <Button >Fetch All Spaces</Button>
-
                 <SpaceList allSpaces={this.state.allSpaces}/>
             </div>
         )

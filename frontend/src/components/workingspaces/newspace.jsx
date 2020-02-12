@@ -16,12 +16,14 @@ class NewSpace extends Component {
             security: 3,
             wifiSpeed: 3
         }
+        
     }
-
+    
     
     handleSubmit = (e) => {
-        axios.post('http://localhost:8080/workingspace', this.state)
         e.preventDefault()
+        axios.post('http://localhost:8080/workingspace', this.state)
+        .then(this.props.showNewSpace())
     }
     
     
@@ -65,25 +67,25 @@ class NewSpace extends Component {
             <Grid container spacing={4}>
                 <Grid item xs={3}>
 
-                    <Typography for='name'>Name</Typography>
+                    <Typography>Name</Typography>
                     <TextField type='text' id='name' name='name' placeholder='Starbucks' onChange={this.handleChange} />
 
                 </Grid>
                 <Grid item xs={3}>
 
-                    <Typography for='country'>Country</Typography>
+                    <Typography>Country</Typography>
                     <TextField type='text' id='country' name='country' placeholder='Canada' onChange={this.handleChange} />
 
                 </Grid>
                 <Grid item xs={3}>
 
-                    <Typography for='city'>City</Typography>
+                    <Typography>City</Typography>
                     <TextField type='text' id='city' name='city' placeholder='Vancouver' onChange={this.handleChange} />
 
                 </Grid>
                 <Grid item xs={3}>
 
-                    <Typography for='address'>Address</Typography>
+                    <Typography>Address</Typography>
                     <TextField type='text' id='address' name='address' placeholder='1030 W Georgia St' onChange={this.handleChange} />
 
                 </Grid>
@@ -92,7 +94,7 @@ class NewSpace extends Component {
 
             <Grid container spacing={4}>
                 <Grid item xs={4}>
-                    <Typography >Privacy</Typography>
+                    <Typography>Privacy</Typography>
                     <Slider id='privacy' value={this.state.privacy} step={1} marks={marks} min={1} max={5} onChange={this.handleChange} valueLabelDisplay="auto" />
 
                 </Grid>
@@ -123,8 +125,7 @@ class NewSpace extends Component {
                 </Grid>
 
             </Grid>
-
-
+                {console.log(this.props)}
             <Button type='submit'>Submit</Button>
         </form>
     )

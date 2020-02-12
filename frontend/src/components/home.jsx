@@ -6,7 +6,7 @@ class Home extends Component {
 
 render() {
      return(
-     <Typography classname="header" variant="h1">
+     <Typography className="header" variant="h1">
           Welcome To Public Working Spaces
      </Typography>
 

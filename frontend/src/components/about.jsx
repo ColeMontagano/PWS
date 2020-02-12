@@ -4,9 +4,9 @@ import {Typography} from '@material-ui/core'
 class About extends Component {
     render() {
         return(
-            <Typography classname="header" variant="h1">
+            <Typography className="header" variant="h1">
             Hello From About
-       </Typography>
+            </Typography>
         )
     }
 }
