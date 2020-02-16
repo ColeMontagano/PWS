@@ -16,3 +16,29 @@
 	color:#c0c0c2;
 }
 
+.mapboxContainer {
+	width: 80%;
+	height : 400;
+	margin : 10rem;
+}
+
+.mapContainer {
+	position: absolute;
+	margin: 10rem;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	}
+
+.sidebarStyle {
+	display: flex;
+	position: relative;
+	top: 0;
+	left: 0;
+	background-color: #404040;
+	color: #ffffff;
+	z-index: 1 !important;
+	padding: 6px;
+	font-weight: bold;
+	}

@@ -6,6 +6,7 @@ import {Home, About, WorkingSpaces, Navbar } from './components/index.js'
 function App() {
   return (
     <div className="App">
+        
         <Navbar/>
         <Switch>
           <Route path='/' exact component={Home} />
