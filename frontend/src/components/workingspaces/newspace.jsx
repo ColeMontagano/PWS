@@ -126,7 +126,7 @@ class NewSpace extends Component {
 
             </Grid>
                 {console.log(this.props)}
-            <Button type='submit'>Submit</Button>
+            <Button onClick={() => this.props.showNewSpace()}>Hide</Button> <Button type='submit'>Submit</Button>
         </form>
     )
 }

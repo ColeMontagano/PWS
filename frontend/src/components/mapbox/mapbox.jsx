@@ -9,7 +9,7 @@ class Mapbox extends Component {
         this.state = {
             lng: 6,
             lat: 34,
-            zoom: 5
+            zoom: 10
         }
 
         this.getLocation = this.getLocation.bind(this)
@@ -17,11 +17,31 @@ class Mapbox extends Component {
     }
     componentDidMount() {
         this.getLocation()
-        this.loadMap()
     }
 
+    getLocation = () => {
+        const options = {
+            enableHighAccuracy: false,
+            timeout: 5000,
+            maximumAge: 0
+        }
+        
+        const success = (pos) => {
+            var crd = pos.coords;
+            this.setState({
+                lng: crd.longitude,
+                lat: crd.latitude,
+            })
+            this.loadMap()
+        }
+        const error = (err) => {
+            console.warn(`ERROR(${err.code}): ${err.message}`);
+        }
+        navigator.geolocation.getCurrentPosition(success, error, options)
+
+    }
+    
     loadMap = () => {
-        console.log("running load map")
         axios.get("http://localhost:8080/mapboxAPIKey").then(({ data }) => {
             mapboxgl.accessToken = data
         }).then(() => {
@@ -41,37 +61,6 @@ class Mapbox extends Component {
         }
         )
     }
-
-    getLocation = () => {
-        console.log("getting location")
-        const options = {
-            enableHighAccuracy: false,
-            timeout: 5000,
-            maximumAge: 0
-        }
-        
-        const success = (pos) => {
-            console.log("success")
-            var crd = pos.coords;
-            console.log(this.state.lat)
-            this.setState({
-                lng: crd.longitude,
-                lat: crd.latitude,
-            })
-          
-            console.log('Your current position is:');
-            console.log(`Latitude : ${this.state.lat}`);
-            console.log(`Longitude: ${this.state.lng}`);
-            console.log(`More or less ${crd.accuracy} meters.`);
-          }
-          
-          const error = (err) => {
-            console.warn(`ERROR(${err.code}): ${err.message}`);
-          }
-       navigator.geolocation.getCurrentPosition(success, error, options)
-    }
-
-
 
     render() {
         
