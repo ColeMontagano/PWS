@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import mapboxgl from 'mapbox-gl'
 import axios from 'axios'
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
 
 
 class Mapbox extends Component {
@@ -9,7 +10,8 @@ class Mapbox extends Component {
         this.state = {
             lng: 6,
             lat: 34,
-            zoom: 10
+            zoom: 10,
+            value: null
         }
 
         this.getLocation = this.getLocation.bind(this)
@@ -40,6 +42,10 @@ class Mapbox extends Component {
         navigator.geolocation.getCurrentPosition(success, error, options)
 
     }
+
+    onSelect = (value) => {
+        this.setState({ value: value });
+      }
     
     loadMap = () => {
         axios.get("http://localhost:8080/mapboxAPIKey").then(({ data }) => {
@@ -58,6 +64,12 @@ class Mapbox extends Component {
                         zoom: map.getZoom().toFixed(2)
                         });
                         });
+                        map.addControl(
+                            new MapboxGeocoder({
+                            accessToken: mapboxgl.accessToken,
+                            mapboxgl: mapboxgl
+                            })
+                            );
         }
         )
     }
@@ -66,11 +78,13 @@ class Mapbox extends Component {
         
 
         return (
+            <div>
             <div className="mapboxContainer">
                 <div className='sidebarStyle'>
                     <div>Longitude: {this.state.lng} | Latitude: {this.state.lat} | Zoom: {this.state.zoom}</div>
                 </div>
                 <div ref={el => this.mapContainer = el} className='mapContainer' />
+            </div>
             </div>
         )
     }
