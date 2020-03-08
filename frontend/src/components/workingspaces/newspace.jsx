@@ -58,9 +58,9 @@ class NewSpace extends Component {
                 }
             ];
         
-            function valuetext(value) {
-                return `${value}`;
-            }
+            // function valuetext(value) {
+            //     return `${value}`;
+            // }
 
     return(
         <form onSubmit={this.handleSubmit}>

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import NewSpace from './newspace'
-import Spaces from './spaces'
-import Mapbox from '../mapbox/mapbox'
+// import Spaces from './spaces'
+import Mapbox from '../mapbox/mapboxgl'
 import {Typography, Button, Container} from '@material-ui/core'
 
 class WorkingSpaces extends Component {

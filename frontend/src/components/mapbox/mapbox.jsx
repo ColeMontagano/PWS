@@ -24,6 +24,8 @@ class Mapbox extends Component {
     getDataSet = () => {
         axios.get('http://localhost:8080/getDataSet')
     }
+
+    
     getLocation = () => {
         const options = {
             enableHighAccuracy: false,
