@@ -1,17 +1,13 @@
-import React, {Component} from 'react'
+import React from 'react'
 import { Typography } from '@material-ui/core'
 
-
-class Home extends Component {
-
-render() {
+function Home() {
      return(
-     <Typography className="header" variant="h1">
-          Welcome To Public Working Spaces
-     </Typography>
-
-     )
-}
+          <Typography className="header" variant="h1">
+               Welcome To Public Working Spaces
+          </Typography>
+     
+          )
 }
 
 export default Home

@@ -27,7 +27,7 @@ export default function Mapbox() {
         setViewport({
             latitude : crd.latitude,
             longitude : crd.longitude,
-            zoom: 10,
+            zoom: 11,
             bearing: 0,
             pitch: 0})
         setLoading(false)
@@ -48,7 +48,7 @@ export default function Mapbox() {
       {...viewport}
       width="50vw"
       height="40vh"
-      mapStyle="mapbox://styles/mapbox/dark-v9"
+      mapStyle="mapbox://styles/mapbox/streets-v11"
       onViewportChange={setViewport}
       mapboxApiAccessToken={MAPBOX_TOKEN}
     />

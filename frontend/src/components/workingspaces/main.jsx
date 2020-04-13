@@ -1,25 +1,15 @@
-import React, {Component} from 'react'
+
+import React, { useState } from 'react';
 import NewSpace from './newspace'
-// import Spaces from './spaces'
+import Spaces from './spaces'
 import Mapbox from '../mapbox/mapboxgl'
 import {Typography, Button, Container} from '@material-ui/core'
 
-class WorkingSpaces extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            newSpaceOpen : false
-        }
 
-    }
+function WorkingSpaces(props) {
+    
+    const [newSpaceOpen, showNewSpace] = useState(false)
 
-
-    render() {
-        const showNewSpace = () => {
-            this.setState({
-                newSpaceOpen : !this.state.newSpaceOpen
-            })
-        }
         return(
                 <Container>
                 <Typography className="header" variant="h1">
@@ -27,8 +17,8 @@ class WorkingSpaces extends Component {
                 </Typography>
 
                 
-                {this.state.newSpaceOpen ? <NewSpace showNewSpace={() => showNewSpace()}/> : <Button onClick={showNewSpace}> New Space </Button>}
-                {/* <Spaces /> */}
+                {newSpaceOpen ? <NewSpace showNewSpace={() => showNewSpace()}/> : <Button onClick={showNewSpace}> New Space </Button>}
+                <Spaces />
 
                 <div className="map-box">
 
@@ -37,6 +27,5 @@ class WorkingSpaces extends Component {
                 </Container>
         )
     }
-}
 
 export default WorkingSpaces

@@ -1,26 +1,19 @@
-import React, {Component} from 'react'
+import React, {useState, useEffect} from 'react'
 // import {Button} from '@material-ui/core'
 import SpaceList from './spaceList'
 import axios from 'axios'
 
-class Spaces extends Component {
-    state = ({
-        allSpaces : []
+function Spaces() {
+    const [allSpaces, setSpaces] = useState([])
+
+    useEffect(()=> {
+        axios.get('http://localhost:8080/workingspace').then(allItems => setSpaces(allItems.data))
     })
-
-    componentDidMount() {
-        axios.get('http://localhost:8080/workingspace').then(allItems => this.setState({allSpaces : allItems.data}))
-    }
-
-
-
-    render(){
         return (
             <div>
-                <SpaceList allSpaces={this.state.allSpaces}/>
+                <SpaceList allSpaces={allSpaces}/>
             </div>
         )
-    }
 }
 
 export default Spaces

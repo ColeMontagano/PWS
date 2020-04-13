@@ -1,12 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 
-class Navbar extends Component {
-	render() {
+function Navbar() {
 		return (
 			<div className="Navbar">
 				<AppBar position="sticky">
@@ -29,7 +28,6 @@ class Navbar extends Component {
 				</AppBar>
 			</div>
 		)
-	}
 }
 
 export default Navbar

@@ -1,31 +1,20 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import mapboxgl from 'mapbox-gl'
 import axios from 'axios'
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
 
+function Mapbox() {
+const [mapDetails, setMapDetails] = useState({
+    lng: 6,
+    lat: 34,
+    zoom: 10,
+    value: null
+})
 
-class Mapbox extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            lng: 6,
-            lat: 34,
-            zoom: 10,
-            value: null
-        }
+// useEffect(() => {
+//     axios.get('http://localhost:8080/getDataSet').then(data => console.log(data))
+// })
 
-        this.getLocation = this.getLocation.bind(this)
-
-    }
-    componentDidMount() {
-        this.getDataSet()
-    }
-
-    getDataSet = () => {
-        axios.get('http://localhost:8080/getDataSet')
-    }
-
-    
     getLocation = () => {
         const options = {
             enableHighAccuracy: false,
@@ -35,7 +24,8 @@ class Mapbox extends Component {
         
         const success = (pos) => {
             var crd = pos.coords;
-            this.setState({
+            setMapDetails({
+                ...mapDetails,
                 lng: crd.longitude,
                 lat: crd.latitude,
             })
@@ -49,7 +39,7 @@ class Mapbox extends Component {
     }
 
     onSelect = (value) => {
-        this.setState({ value: value });
+        setMapDetails({...mapDetails, value})
       }
     
     loadMap = () => {
@@ -59,15 +49,18 @@ class Mapbox extends Component {
             let map = new mapboxgl.Map({
                 container: this.mapContainer,
                 style: 'mapbox://styles/mapbox/streets-v11',
-                center: [this.state.lng, this.state.lat],
-                zoom: this.state.zoom
+                center: [mapDetails.lng, mapDetails.lat],
+                zoom: mapDetails.zoom
             });
                     map.on('move', () => {
-                        this.setState({
-                        lng: map.getCenter().lng.toFixed(4),
-                        lat: map.getCenter().lat.toFixed(4),
-                        zoom: map.getZoom().toFixed(2)
-                        });
+                        setMapDetails({
+                            ...mapDetails,
+                            lng: map.getCenter().lng.toFixed(4),
+                            lat: map.getCenter().lat.toFixed(4),
+                            zoom: map.getZoom().toFixed(2)
+                        })
+
+
                         });
                         map.addControl(
                             new MapboxGeocoder({
@@ -78,8 +71,6 @@ class Mapbox extends Component {
         }
         )
     }
-
-    render() {
         
 
         return (
@@ -92,7 +83,6 @@ class Mapbox extends Component {
             </div>
             </div>
         )
-    }
 }
 
 export default Mapbox
