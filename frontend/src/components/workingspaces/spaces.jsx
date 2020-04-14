@@ -11,7 +11,7 @@ function Spaces() {
     })
         return (
             <div>
-                <SpaceList allSpaces={allSpaces}/>
+                {/* <SpaceList allSpaces={allSpaces}/> */}
             </div>
         )
 }

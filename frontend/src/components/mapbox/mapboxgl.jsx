@@ -46,7 +46,7 @@ export default function Mapbox() {
   return (
     <MapGL
       {...viewport}
-      width="50vw"
+      width="100%"
       height="40vh"
       mapStyle="mapbox://styles/mapbox/streets-v11"
       onViewportChange={setViewport}
