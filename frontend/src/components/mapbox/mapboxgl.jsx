@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import MapGL from 'react-map-gl';
+import MapGL, {GeolocateControl} from 'react-map-gl';
 import axios from 'axios'
 
-var MAPBOX_TOKEN = ''; // Set your mapbox token here
+var MAPBOX_TOKEN = '';
 
 export default function Mapbox() {
   const [viewport, setViewport] = useState();
@@ -11,33 +11,16 @@ export default function Mapbox() {
   useEffect(() => {
             axios.get("http://localhost:8080/mapboxAPIKey").then(({data}) => {
             MAPBOX_TOKEN = data
-            getLocation()
+            setLoading(false)
         })
   }, [])
 
-  const getLocation = () => {
-    const options = {
-        enableHighAccuracy: false,
-        timeout: 5000,
-        maximumAge: 0
-    }
-    
-    const success = (pos) => {
-        var crd = pos.coords;
-        setViewport({
-            latitude : crd.latitude,
-            longitude : crd.longitude,
-            zoom: 11,
-            bearing: 0,
-            pitch: 0})
-        setLoading(false)
-    }
-    const error = (err) => {
-        console.warn(`ERROR(${err.code}): ${err.message}`);
-    }
-    navigator.geolocation.getCurrentPosition(success, error, options)
-
-}
+  const geolocateStyle = {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    margin: 10
+  };
 
   if (loading === true) {
       return <div>Loading...</div>
@@ -51,6 +34,13 @@ export default function Mapbox() {
       mapStyle="mapbox://styles/mapbox/streets-v11"
       onViewportChange={setViewport}
       mapboxApiAccessToken={MAPBOX_TOKEN}
-    />
+    >
+    <GeolocateControl
+    positionOptions={{enableHighAccuracy: true}}
+    trackUserLocation={true}
+    showUserLocation={false}
+    style={geolocateStyle}
+  />
+  </MapGL>
   );
 }

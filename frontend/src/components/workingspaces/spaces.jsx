@@ -8,7 +8,7 @@ function Spaces() {
 
     useEffect(()=> {
         axios.get('http://localhost:8080/workingspace').then(allItems => setSpaces(allItems.data))
-    })
+    }, [])
         return (
             <div>
                 {/* <SpaceList allSpaces={allSpaces}/> */}
